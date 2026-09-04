@@ -1,0 +1,21 @@
+--- src/components/Chat/ChatInterface.tsx
++++ src/components/Chat/ChatInterface.tsx
+@@ -7,7 +7,7 @@
+ import MessageList from "./MessageList";
+ import MediaPicker from "./MediaPicker";
+ import { useState } from "react";
+-import { MessageSquare, Settings, Users, Hash, Paperclip, PlusCircle, ArrowLeft } from "lucide-react";
++import { MessageSquare, Settings, Users, Hash, Paperclip, PlusCircle, ArrowLeft, LogOut } from "lucide-react";
+ import Link from "next/link";
+ 
+ export function ChatInterface() {
+@@ -99,6 +99,9 @@
+                         <button className="p-2 hover:bg-slate-100 rounded-full transition-colors active:bg-slate-200">
+                             <Settings className="w-5 h-5 text-slate-600" />
+                         </button>
++                        <Link href="/api/auth/signout" className="p-2 hover:bg-red-50 text-red-500 rounded-full transition-colors active:bg-red-100 ml-2" title="Sign Out">
++                            <LogOut className="w-5 h-5" />
++                        </Link>
+                     </div>
+                 </header>
+ 
