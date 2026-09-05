@@ -1,0 +1,41 @@
+
+> hiring_task@0.1.0 dev
+> tsx server.ts
+
+2026-09-06 15:36:14.220839: I tensorflow/core/util/util.cc:169] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-09-06 15:36:14.250556: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+✓ Running next.config.ts took 39ms
+✅ Socket.IO using Redis pub/sub adapter
+> Ready on http://localhost:3000
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 495ms (next.js: 256ms, application-code: 239ms)
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 489ms (next.js: 284ms, application-code: 204ms)
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 155ms (next.js: 5ms, application-code: 150ms)
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 50ms (next.js: 6ms, application-code: 44ms)
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 50ms (next.js: 15ms, application-code: 35ms)
+ GET /?chat=440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 19ms (next.js: 5ms, application-code: 14ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+ GET /api/auth/session 200 in 798ms (next.js: 766ms, application-code: 32ms)
+ GET /api/auth/session 200 in 641ms (next.js: 607ms, application-code: 34ms)
+ GET /api/auth/session 200 in 466ms (next.js: 15ms, application-code: 451ms)
+ GET /api/auth/session 200 in 452ms (next.js: 12ms, application-code: 440ms)
+ GET /api/conversations 200 in 550ms (next.js: 383ms, application-code: 167ms)
+ GET /api/conversations 200 in 554ms (next.js: 174ms, application-code: 379ms)
+ GET /api/conversations/440aa28a-0e4c-483f-baf5-da9c3b84a21e/messages?limit=50 404 in 977ms (next.js: 966ms, application-code: 12ms)
+ GET /api/conversations/440aa28a-0e4c-483f-baf5-da9c3b84a21e/messages?limit=50 200 in 983ms (next.js: 956ms, application-code: 27ms)
+ DELETE /api/conversations/440aa28a-0e4c-483f-baf5-da9c3b84a21e 200 in 1109ms (next.js: 1041ms, application-code: 68ms)
+ GET /api/conversations 200 in 31ms (next.js: 4ms, application-code: 27ms)
+ GET / 200 in 16ms (next.js: 5ms, application-code: 11ms)
+ GET / 200 in 18ms (next.js: 3ms, application-code: 15ms)
+ DELETE /api/conversations/0a2a08d2-a811-4b3a-9e89-5332370c8518 200 in 63ms (next.js: 25ms, application-code: 37ms)
+ GET /api/conversations 200 in 11ms (next.js: 1.3ms, application-code: 10ms)
+ GET /api/users 200 in 76ms (next.js: 65ms, application-code: 11ms)
+ POST /api/conversations/new 200 in 89ms (next.js: 61ms, application-code: 27ms)
+ GET /api/conversations 200 in 41ms (next.js: 2ms, application-code: 39ms)
+ GET /?chat=20ba3468-eb56-4bb9-9792-b8d8d3244e88 200 in 34ms (next.js: 3ms, application-code: 32ms)
+ GET /api/conversations/20ba3468-eb56-4bb9-9792-b8d8d3244e88/messages?limit=50 200 in 26ms (next.js: 12ms, application-code: 14ms)
+ GET /api/conversations 200 in 14ms (next.js: 3ms, application-code: 12ms)
+ GET /api/conversations 200 in 13ms (next.js: 2.0ms, application-code: 11ms)
+ GET /?chat=20ba3468-eb56-4bb9-9792-b8d8d3244e88 200 in 20ms (next.js: 3ms, application-code: 18ms)
+ GET /api/conversations/20ba3468-eb56-4bb9-9792-b8d8d3244e88/messages?limit=50 200 in 48ms (next.js: 15ms, application-code: 33ms)
