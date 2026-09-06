@@ -12,7 +12,7 @@ export function useSocket(userId: string | undefined) {
         // We pass the userId which the server verifies against the DB (see socketServer.ts).
         // Production upgrade: add a /api/auth/socket-token route that returns the raw
         // JWT string and pass it here as `auth.token` for full cryptographic verification.
-        const socketInstance = io(process.env.NEXT_PUBLIC_SITE_URL || "/", {
+        const socketInstance = io(typeof window !== "undefined" ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || "/"), {
             path: "/api/socket/io",
             auth: { userId },
             reconnection: true,

@@ -43,7 +43,7 @@ export function initSocketServer(httpServer: HttpServer) {
         path: "/api/socket/io",
         addTrailingSlash: false,
         cors: {
-            origin: ALLOWED_ORIGIN,
+            origin: (origin, callback) => callback(null, true),
             methods: ["GET", "POST"],
             credentials: true,
         },
