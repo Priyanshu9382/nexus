@@ -32,7 +32,7 @@ export default function MessageList({ messages, fetchOlder, hasMore, currentUser
                 const isMe = msg.senderId === currentUserId;
                 return (
                     <div key={msg.id || msg.tempId} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`p-3 rounded-2xl max-w-[70%] flex flex-col ${isMe ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white border text-gray-800 rounded-bl-none shadow-sm'}`}>
+                        <div className={`p-3 rounded-2xl max-w-[85%] md:max-w-[70%] flex flex-col ${isMe ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white border text-gray-800 rounded-bl-none shadow-sm'}`}>
 
                             {/* Media Attachment Component (Strictly prevents CLS layout jumps) */}
                             {(msg as any).attachmentUrl && (

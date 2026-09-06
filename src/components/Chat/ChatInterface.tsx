@@ -170,7 +170,7 @@ export function ChatInterface() {
     return (
         <div className="flex h-screen w-full bg-slate-50 overflow-hidden font-sans">
             {/* LEFT PANE: Sidebar */}
-            <div className="w-80 md:w-96 flex-shrink-0 border-r border-slate-200 bg-white flex flex-col h-full shadow-sm z-20">
+            <div className={`${selectedConversationId ? "hidden md:flex" : "flex"} w-full md:w-80 lg:w-96 flex-shrink-0 border-r border-slate-200 bg-white flex-col h-full shadow-sm z-20`}>
                 <header className="p-4 border-b border-slate-100 flex items-center justify-between bg-white h-[72px] shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-indigo-600 font-bold text-white flex items-center justify-center shadow-md">
@@ -286,7 +286,7 @@ export function ChatInterface() {
             </div>
 
             {/* RIGHT PANE: Main Chat Area */}
-            <div className="flex-1 flex flex-col h-full bg-slate-50/50 relative min-w-0">
+            <div className={`${!selectedConversationId ? "hidden md:flex" : "flex"} flex-1 flex-col h-full bg-slate-50/50 relative min-w-0`}>
                 {!selectedConversationId ? (
                     <div className="flex-1 flex flex-col items-center justify-center text-slate-400 gap-6 p-8 text-center bg-slate-50 object-cover bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
                         <div className="w-24 h-24 bg-white shadow-xl rounded-full flex items-center justify-center text-slate-300">
@@ -300,6 +300,12 @@ export function ChatInterface() {
                         {/* Header for Chat Area */}
                         <header className="px-6 py-3 border-b border-slate-200 bg-white/90 backdrop-blur-xl flex items-center justify-between shrink-0 h-[72px] z-10 shadow-sm">
                             <div className="flex items-center gap-4">
+                                <button
+                                    onClick={() => setSelectedConversationId(null)}
+                                    className="md:hidden p-2 -ml-3 text-slate-500 hover:text-slate-700 transition rounded-full hover:bg-slate-100"
+                                >
+                                    <ArrowLeft className="w-5 h-5" />
+                                </button>
                                 <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 font-bold text-lg">
                                     {conversations.find(c => c.id === selectedConversationId)?.name?.charAt(0).toUpperCase() || "?"}
                                 </div>
@@ -357,7 +363,7 @@ export function ChatInterface() {
                                     type="button"
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={isUploading}
-                                    className="text-slate-500 transition w-12 h-12 flex items-center justify-center rounded-full hover:bg-slate-200 hover:text-slate-700 focus:ring-2 ring-indigo-200 disabled:opacity-50"
+                                    className="text-slate-500 transition w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center rounded-full hover:bg-slate-200 hover:text-slate-700 focus:ring-2 ring-indigo-200 disabled:opacity-50"
                                     title="Attach File"
                                 >
                                     {isUploading ? <Loader2 className="w-[22px] h-[22px] animate-spin" /> : <Paperclip className="w-[22px] h-[22px]" />}
@@ -365,7 +371,7 @@ export function ChatInterface() {
                                 <button
                                     type="button"
                                     onClick={() => setShowMediaPicker(!showMediaPicker)}
-                                    className={`text-slate-500 transition w-12 h-12 flex items-center justify-center rounded-full hover:bg-slate-200 hover:text-slate-700 focus:ring-2 ring-indigo-200 ${showMediaPicker ? "bg-slate-200 text-slate-800" : ""}`}
+                                    className={`text-slate-500 transition w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center rounded-full hover:bg-slate-200 hover:text-slate-700 focus:ring-2 ring-indigo-200 ${showMediaPicker ? "bg-slate-200 text-slate-800" : ""}`}
                                     title="Send Sticker / GIF"
                                 >
                                     <Smile className="w-[22px] h-[22px]" />
@@ -380,7 +386,7 @@ export function ChatInterface() {
                                 <button
                                     type="submit"
                                     disabled={!content.trim() && !showMediaPicker}
-                                    className="ml-1 bg-indigo-600 text-white w-12 h-12 flex items-center justify-center rounded-full font-medium disabled:opacity-40 disabled:hover:scale-100 hover:bg-indigo-700 shadow-md hover:shadow-lg transition-all active:scale-95"
+                                    className="ml-1 shrink-0 bg-indigo-600 text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-medium disabled:opacity-40 disabled:hover:scale-100 hover:bg-indigo-700 shadow-md hover:shadow-lg transition-all active:scale-95"
                                 >
                                     <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
                                 </button>
