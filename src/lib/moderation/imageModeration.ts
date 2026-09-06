@@ -16,9 +16,9 @@ export async function initModerationModel() {
     isInitializing = true;
     try {
         model = await nsfwjs.load(); // MobileNetV2 from cloud / local memory
-        console.log("✅ Server-Side NSFWJS Model Loaded successfully");
+        console.log("Server-Side NSFWJS Model Loaded successfully");
     } catch (error) {
-        console.error("❌ Failed to load NSFWJS Model:", error);
+        console.error("Failed to load NSFWJS Model:", error);
         model = null; // Bug-fix #20: ensure model stays null so retry is possible
     } finally {
         isInitializing = false; // Bug-fix #20: ALWAYS reset so next call can retry
@@ -43,7 +43,7 @@ export async function isImageSafe(buffer: Buffer): Promise<{ isSafe: boolean; re
         if (!model) {
             // Bug-fix: Fail OPEN for dev if the TFJS backend crashes due to version issues
             // By bypassing the moderation step when offline, the user can continue testing.
-            console.warn("⚠️ NSFWJS model failed to load. Moderation bypassed (Fail Open).");
+            console.warn("NSFWJS model failed to load. Moderation bypassed (Fail Open).");
             return { isSafe: true };
         }
 

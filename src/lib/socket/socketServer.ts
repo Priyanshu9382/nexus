@@ -22,7 +22,7 @@ const redisClient = new Redis(process.env.REDIS_URL || "redis://localhost:6379",
 let redisReady = false;
 redisClient.connect()
     .then(() => { redisReady = true; })
-    .catch(() => { console.warn("⚠️  Redis unavailable — presence/rate-limit features will be skipped"); });
+    .catch(() => { console.warn("Redis unavailable — presence/rate-limit features will be skipped"); });
 
 /** Thin wrappers that silently no-op when Redis is not connected */
 const rSadd = (key: string, member: string) =>
@@ -56,9 +56,9 @@ export function initSocketServer(httpServer: HttpServer) {
         try {
             const subClient = redisClient.duplicate();
             io.adapter(createAdapter(redisClient, subClient));
-            console.log("✅ Socket.IO using Redis pub/sub adapter");
+            console.log("Socket.IO using Redis pub/sub adapter");
         } catch {
-            console.warn("⚠️  Could not attach Redis adapter — using in-memory adapter");
+            console.warn("Could not attach Redis adapter — using in-memory adapter");
         }
     } else {
         // Attempt adapter attachment once Redis becomes ready
@@ -67,12 +67,12 @@ export function initSocketServer(httpServer: HttpServer) {
                 const subClient = redisClient.duplicate();
                 io.adapter(createAdapter(redisClient, subClient));
                 redisReady = true;
-                console.log("✅ Socket.IO Redis adapter attached (deferred)");
+                console.log("Socket.IO Redis adapter attached (deferred)");
             } catch {
-                console.warn("⚠️  Deferred Redis adapter failed — staying on in-memory adapter");
+                console.warn("Deferred Redis adapter failed — staying on in-memory adapter");
             }
         });
-        console.log("ℹ️  Socket.IO using in-memory adapter (Redis not yet connected)");
+        console.log("Socket.IO using in-memory adapter (Redis not yet connected)");
     }
 
     // -----------------------------------------------------------------------
