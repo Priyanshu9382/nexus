@@ -5,7 +5,7 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { s3Client } from "@/lib/s3";
 import { rateLimit } from "@/lib/rate-limit";
-import crypto from "crypto";
+import { v4 as uuidv4 } from "uuid";
 
 const ALLOWED_MIME_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
         // Generate secure random filename UUID
         const ext = contentType.split("/")[1];
-        const fileName = `${crypto.randomUUID()}.${ext}`;
+        const fileName = `${uuidv4()}.${ext}`;
         const s3Bucket = process.env.R2_BUCKET_NAME || "chats";
 
         const arrayBuffer = await file.arrayBuffer();

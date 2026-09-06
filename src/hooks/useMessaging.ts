@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { Socket } from "socket.io-client";
+import { v4 as uuidv4 } from "uuid";
 
 export interface Message {
     id: string;
@@ -113,7 +114,7 @@ export function useMessaging(socket: Socket | null, conversationId: string, curr
     const sendMessage = useCallback((content: string, attachmentUrl?: string, isSticker = false) => {
         if (!socket) return;
 
-        const tempId = crypto.randomUUID();
+        const tempId = uuidv4();
 
         const optimisticMessage: Message = {
             id: `temp-${tempId}`,
